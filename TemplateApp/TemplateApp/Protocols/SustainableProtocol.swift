@@ -27,7 +27,7 @@ protocol Sustainable: Encodable, Decodable {
 
 extension Sustainable {
     
-    func save(storageType: StorageType, onCompletion: @escaping (String?, StorageErrorInfo) -> ()) {
+    func save(storageType: StorageType = .userDefaults, onCompletion: @escaping (String?, StorageErrorInfo) -> ()) {
         
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -61,7 +61,7 @@ extension Sustainable {
         
     }
     
-    static func retrieve<T: Sustainable>(storageType: StorageType, type: T.Type, index: String, onCompletion: @escaping (T?, StorageErrorInfo) -> ()) {
+    static func retrieve<T: Sustainable>(storageType: StorageType = .userDefaults, type: T.Type, index: String, onCompletion: @escaping (T?, StorageErrorInfo) -> ()) {
         
         switch storageType {
         case .parse:
