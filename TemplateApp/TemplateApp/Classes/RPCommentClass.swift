@@ -14,4 +14,8 @@ class RPComment: Sustainable {
     var comment2 = 2
     var comment3 = "comment3"
     
+    func dummy() {
+        
+    }
+    
 }

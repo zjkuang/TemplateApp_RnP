@@ -8,8 +8,20 @@
 
 import Foundation
 
+// Any class conforming to Sustainable will be able to have
+//  - save
+//  - retrieve
+// methods to access storage which can be, specified by storageType, Parse/RESTful server, local database, or User Defaults
+// Can easily extend to other future unknown storage type without touch the classes
+
 protocol Sustainable: Encodable, Decodable {
+    
+    // save class instance as JSON data according to storageType
+    // asynchronous callback returns storage index (as the key for future retrieve) and error code
     func save(storageType: StorageType, onCompletion: @escaping (String?, StorageErrorInfo) -> ())
+    
+    // retrieve according to storageType and storage index
+    // asynchronous callback returns the class instance and error code
     static func retrieve<T: Sustainable>(storageType: StorageType, type: T.Type, index: String, onCompletion: @escaping (T?, StorageErrorInfo) -> ())
 }
 

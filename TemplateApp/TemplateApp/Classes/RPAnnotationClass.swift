@@ -14,4 +14,8 @@ class RPAnnotation: Sustainable {
     var annotation2 = 2
     var annotation3 = "annotation3"
     
+    func dummy() {
+        
+    }
+    
 }
